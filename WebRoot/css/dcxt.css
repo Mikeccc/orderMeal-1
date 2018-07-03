@@ -1,0 +1,133 @@
+/* CSS Document */
+
+.ny_table{margin:10px;}
+
+.ny_table td{padding:0px 3px;}
+
+.ny_top{width:100%; display:inline-block; border-bottom:1px dashed #CCCCCC; padding:5px 0px;}
+
+.ny_top li{float:left; padding:0px 5px;}
+
+.lineblock{display:block; line-height:24px;}
+
+.yellow_font{color:#FF6600;}
+
+.namelist{line-height:24px;}
+
+.Nlist_box{display:inline-block; border-top:1px solid #C3D9F1; border-bottom:1px solid #C3D9F1; border-right:1px solid #C3D9F1; float:left; margin:10px 0px 0px 10px;}
+
+.Nlist_box li{float:left; border-left:1px solid #C3D9F1; }
+
+.Nlist_wid_one{ width:100px; text-indent:15px;}
+.Nlist_wid_userName{ width:80px; text-indent:15px;}
+
+.Nlist_wid_two{width:100px;text-indent:15px;}
+.Nlist_wid_email{width:150px;text-indent:15px;}
+
+.fxk_box{ width:30px; text-align:center}
+
+.xglist{display:block; width:600px; margin:10px;}
+.xglist2{display:block; width:250px; margin:10px;}
+
+.gys_table{border-collapse:collapse; clear:both; line-height:24px; margin:10px;}
+
+.gys_table td{ padding:0px 5px;}
+
+
+#tabbox{ 
+	width:97%; 
+	overflow:hidden; 
+	margin:10px;}
+	
+.tab_conbox{
+	border: 1px solid #CAD9EA;
+	border-top: none;}
+
+.tabs{
+	height: 32px;
+	border-bottom:1px solid #CAD9EA;
+	border-left: 1px solid #CAD9EA;
+	width: 100%;}
+	
+.tabs li{
+	height:31px;
+	line-height:31px;
+	float:left;
+	border:1px solid #CAD9EA; 
+	border-left:none; 
+	margin-bottom: -1px; 
+	background: #F3F8FD;
+	overflow: hidden;
+	position: relative;}
+
+.tabs li a {
+	display: block; 
+	padding: 0 20px;
+	border: 1px solid #fff;
+	outline: none;}
+
+.tabs li a:hover {
+	background: #F3F8FD;}	
+
+.tabs .thistab,.tabs .thistab a:hover{
+	background: #fff; 
+	border-bottom: 1px solid #fff;}
+
+.tab_con {
+	padding:12px; 
+	line-height:175%;}
+	
+.cd_list_box{width:200px; display:inline-block; line-height:24px; border-bottom:1px dashed #CCCCCC; margin-left:50px;float:left;}
+
+.cd_listL{display:block; float:left}
+
+.cd_listR{display:block; float:right; color:#FF6600;}
+
+.dp_name{display:block; padding:5px 10px;}
+
+.dp_font{font-size:18px;font-weight:bold;}
+
+.font_block{display:block; float:left; width:60px; padding:3px 0px;}
+
+/* 需要设置隐藏的对象直接使用 */
+.hidden{ 
+	display: none;
+}
+
+label.error{
+	color: red;
+}
+
+.tjlist_box{display:inline-block; padding:10px 0px 0px 5px; clear:both;}
+
+.tjlist_box span{display:block; float:left; padding:0px 5px;}
+
+.date_list{padding:0px 0px 40px 48px;}
+
+.date_list a{display:block; float:left; padding:3px 20px; background:#F5F5F5; margin-left:5px;}
+	
+.date_list a:link{color:#3366cc;}
+	
+.date_list a:hover{color:#FF0000; background:#CCCCCC;}
+	
+.date_list a:visited{color:#3366cc;}
+	
+.date_list a:active{color:#3366cc;}
+	
+.cz_btn{padding:10px;}
+	
+.cz_btn span{display:block; float:left; padding:0px 5px;}
+
+.xxcd_imgL{ float:left}
+
+.xxcd_imgR{float:left; margin-left:10px;}
+
+.xxcd_imgR font{display:block; padding:5px; clear:both}
+
+.xgpic_box{width:100%; display:inline-block; padding:10px 0px; text-indent:10px; clear:both;}
+
+.jieshuo_box{border:1px solid #CAD9EA; margin:5px 10px; line-height:30px;}
+
+.jieshuo_top{background:#F3F8FD; text-indent:10px; font-size:14px; font-weight:bold; width:100%;}
+
+.jieshuo_text{padding:5px; font-size:12px;}

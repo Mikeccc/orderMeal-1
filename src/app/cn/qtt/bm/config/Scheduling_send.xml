@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<import resource="order-context-beans.xml"/>
+	<import resource="order-actionMgr-beans.xml"/>
+	<import resource="order-service-beans.xml"/>
+	<import resource="order-dao-beans.xml"/>
+	<import resource="order-log-beans.xml"/>
+	<import resource="order-scheduler-service.xml"/>
+	<import resource="Scheduling-send-service.xml"/>
+</beans>

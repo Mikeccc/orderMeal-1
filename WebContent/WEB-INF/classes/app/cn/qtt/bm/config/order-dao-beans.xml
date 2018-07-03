@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="tSysUserInfoDAOImpl" class="app.cn.qtt.bm.dao.TSysUserInfoDAOImpl">
+		<description></description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tSysLinkUserRoleDAOImpl" class="app.cn.qtt.bm.dao.TSysLinkUserRoleDAOImpl">
+		<description></description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<bean id="tSysCodeTreeDAOImpl" class="app.cn.qtt.bm.dao.TSysCodeTreeDAOImpl">
+		<description></description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tSysParameterDAOImpl" class="app.cn.qtt.bm.dao.TSysParameterDAOImpl">
+		<description></description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tSysRoleInfoDAOImpl" class="app.cn.qtt.bm.dao.TSysRoleInfoDAOImpl">
+		<description></description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tSysMenuFuncInfoDAOImpl" class="app.cn.qtt.bm.dao.TSysMenuFuncInfoDAOImpl">
+		<description></description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tSysMenuInfoDAOImpl" class="app.cn.qtt.bm.dao.TSysMenuInfoDAOImpl">
+		<description></description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<bean id="tSysLinkRoleMenuDAOImpl" class="app.cn.qtt.bm.dao.TSysLinkRoleMenuDAOImpl">
+		<description></description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- 订餐系统DAO start -->
+	<bean id="tShopInfoDAOImpl" class="app.cn.qtt.bm.dao.TShopInfoDAOImpl">
+		<description>商店信息</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tShopGoodsDAOImpl" class="app.cn.qtt.bm.dao.TShopGoodsDAOImpl">
+		<description>商品信息</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tShopCategoryGoodsDAOImpl" class="app.cn.qtt.bm.dao.TShopCategoryGoodsDAOImpl">
+		<description>商品分类</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tShopCategoryGoodsLinkDAOImpl" class="app.cn.qtt.bm.dao.TShopCategoryGoodsLinkDAOImpl">
+		<description>商品分类与商品关联</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tShopGoodsTimeDAOImpl" class="app.cn.qtt.bm.dao.TShopGoodsTimeDAOImpl">
+		<description>商品供应时间</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tSysFileDAOImpl" class="app.cn.qtt.bm.dao.TSysFileDAOImpl">
+		<description>上传图片信息</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tOrderInfoDAOImpl" class="app.cn.qtt.bm.dao.TOrderInfoDAOImpl">
+		<description>订单信息</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tOrderInfoGoodsDAOImpl" class="app.cn.qtt.bm.dao.TOrderInfoGoodsDAOImpl">
+		<description>订单商品信息</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tOrderInfoShopDAOImpl" class="app.cn.qtt.bm.dao.TOrderInfoShopDAOImpl">
+		<description>订单商店信息</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tShopDailyInfoDAOImpl" class="app.cn.qtt.bm.dao.TShopDailyInfoDAOImpl">
+		<description>商店日统计信息</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tSendSmsBufferDAOImpl" class="app.cn.qtt.bm.dao.TSendSmsBufferDAOImpl">
+		<description>短信发送</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tSendSmsHistoryDAOImpl" class="app.cn.qtt.bm.dao.TSendSmsHistoryDAOImpl">
+		<description>短信发送历史</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tSendMmsBufferDAOImpl" class="app.cn.qtt.bm.dao.TSendMmsBufferDAOImpl">
+		<description>彩信发送</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tSendMmsHistoryDAOImpl" class="app.cn.qtt.bm.dao.TSendMmsHistoryDAOImpl">
+		<description>彩信发送历史</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tSendEmailBufferDAOImpl" class="app.cn.qtt.bm.dao.TSendEmailBufferDAOImpl">
+		<description>邮件发送</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="tsendEmailHistoryDAOImpl" class="app.cn.qtt.bm.dao.TSendEmailHistoryDAOImpl">
+		<description>邮件发送历史</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- 用户登录日志 -->
+	<bean id="tLogUserLoginDAOImpl" class="app.cn.qtt.bm.dao.TLogUserLoginDAOImpl">
+		<description>用户登录日志</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<bean id="tLogUserAccessDAOImpl" class="app.cn.qtt.bm.dao.TLogUserAccessDAOImpl">
+		<description>用户登录日志</description>
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- 订餐系统DAO end -->
+	
+    <bean id="tSysUserSeqDAOImpl" class="app.cn.qtt.bm.dao.TSysUserSeqDAOImpl">
+        <description>SysUserSeq</description>
+        <property name="sqlMapClient" ref="sqlMapClient" />
+    </bean>
+</beans>

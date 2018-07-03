@@ -1,0 +1,25 @@
+﻿/***************************************************
+* CSS:simple-list.css
+* 版本:1.0
+* 作者:liujf
+****************************************************/
+
+/** 官方样式表 **/
+@import url("base.css");
+@import url("layout.css");
+@import url("header.css");
+@import url("button.css");
+@import url("link.css");
+@import url("simpleList.css");
+@import url("detailList.css");
+@import url("login.css");
+@import url("dcxt.css");
+
+/** 第三方样式表 **/
+@import url("thirdParty/tabs.css");
+@import url("thirdParty/treeview.css");
+@import url("thirdParty/sidebar.css");
+@import url("thirdParty/jqDnR.css");
+
+/** 扩展 **/
+@import url("pagebar.css");

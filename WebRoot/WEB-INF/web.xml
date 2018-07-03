@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name>crpp-bm</display-name>
+
+	<!-- Spring ApplicationContext配置文件的路径,可使用通配符,多个路径用,号分隔
+		此参数用于后面的Spring Context Loader -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:app/cn/qtt/bm/config/*-beans.xml</param-value>
+	</context-param>
+
+	<!-- Character Encoding filter -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<!-- Struts2 filter-->
+	<filter>
+		<filter-name>struts2Filter</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter> 
+	 
+	<filter>
+      <filter-name>AccessLogsFilter</filter-name>
+      <filter-class>app.cn.qtt.bm.common.filter.AccessLogsFilter</filter-class>
+      <init-param>
+          <param-name>accessSource</param-name>
+          <param-value>bm</param-value>
+      </init-param>
+  </filter>
+
+  <filter>
+		<filter-name>AccessSqlInjectFilter</filter-name>
+		<filter-class>app.cn.qtt.bm.common.filter.AccessSqlInjectFilter</filter-class>
+		<init-param>
+			<param-name>injectStr</param-name>
+			<param-value>'|and|or|exec|insert|select|delete|update|count|%|from|create|drop|truncate|</param-value>
+		</init-param>
+	</filter>
+  
+	<filter-mapping>
+	      <filter-name>AccessSqlInjectFilter</filter-name>
+	      <url-pattern>/*</url-pattern>
+	</filter-mapping>
+  
+	  <filter-mapping>
+	      <filter-name>AccessLogsFilter</filter-name>
+	      <url-pattern>/*</url-pattern>
+	  </filter-mapping>	
+	  
+	  
+	<filter-mapping>
+		<filter-name>struts2Filter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>	
+  
+	
+	
+	<!-- SpringSecurity filter-->
+	<!-- 
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	 -->
+	<!-- SQL漏洞 
+	<filter>
+		<filter-name>SecurityFilter</filter-name>
+		<filter-class>com.omnitel.web.SecurityFilter</filter-class>
+		<init-param>
+			<param-name>keywords</param-name>
+			<param-value>create;drop;select;insert;update;delete;from;where;&gt;;&lt;</param-value>
+		</init-param>
+	</filter>-->
+	<!-- 
+	<filter-mapping>
+		<filter-name>SecurityFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping> -->
+
+	<!-- 
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+ 	 -->
+
+	
+
+	<!--Spring的ApplicationContext 载入 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
+	<!-- Spring 刷新Introspector防止内存泄露 -->
+	<listener>
+		<listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+	</listener>
+	
+	
+	<listener>
+        <listener-class>app.cn.qtt.bm.common.listeners.SessionListener</listener-class>
+    </listener>
+
+	<!-- session超时定义,单位为分钟 -->
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<servlet>
+	    <servlet-name>JspSupportServlet</servlet-name>
+	    <servlet-class>org.apache.struts2.views.JspSupportServlet</servlet-class>
+	    <load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+	    <servlet-name>GlobalContextInitServlet</servlet-name>
+	    <servlet-class>app.cn.qtt.bm.common.servlet.GlobalContextInitServlet</servlet-class>
+	    <load-on-startup>2</load-on-startup>
+	</servlet>
+	
+	
+	<servlet>  
+		<servlet-name>LoadCacheServlet</servlet-name>  
+		<servlet-class>app.cn.qtt.bm.common.servlet.LoadCacheServlet</servlet-class>  
+		<init-param>  
+			<param-name>servletParamsNames</param-name>  
+			<param-value>ORIGINAL_IMAGE_HTTP_PATH_PREFIX:imageUrlPrefix|BMS_IMAGE_HTTP_PATH_PREFIX:bmsUrlPrefix</param-value>
+		</init-param>
+		<init-param>  
+			<param-name>cacheableBeanNames</param-name>  
+			<param-value>codeCache|parameterCache</param-value>
+		</init-param>     
+	    <load-on-startup>10</load-on-startup>
+	</servlet>
+	 
+	<!--  
+	<servlet>
+		<servlet-name>MakeStaticFileServlet</servlet-name>  
+		<servlet-class>app.cn.qtt.cmbase.system.servlet.HttpServletProxy</servlet-class>  
+		<init-param>  
+			<param-name>targetServlet</param-name>  
+			<param-value>makeStaticFileServlet</param-value>
+		</init-param>  
+	    <load-on-startup>100</load-on-startup>
+	</servlet>
+	-->
+	<!-- 
+	<servlet-mapping>  
+		<servlet-name>LoadResourceServlet</servlet-name>  
+		<url-pattern>/loadParameter.hand</url-pattern>  
+	</servlet-mapping>
+	-->
+	<!--  
+	<servlet-mapping>  
+		<servlet-name>MakeStaticFileServlet</servlet-name>  
+		<url-pattern>/makeStaticFile.hand</url-pattern>  
+	</servlet-mapping>
+	-->
+	
+	
+	<security-constraint>
+		<web-resource-collection>
+		  <web-resource-name>securitydefine</web-resource-name>
+			<url-pattern>/*</url-pattern>
+			<http-method>PUT</http-method>
+			<http-method>DELETE</http-method>
+			<http-method>HEAD</http-method>
+			<http-method>OPTIONS</http-method>
+			<http-method>TRACE</http-method>
+		</web-resource-collection>
+		<auth-constraint></auth-constraint>
+	</security-constraint>
+	
+	
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404.jsp</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500.jsp</location>
+	</error-page>
+	
+	<jsp-config>
+	    <taglib>
+	      <taglib-uri>/WEB-INF/tld/c.tld</taglib-uri>
+	      <taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+	    </taglib>
+	    <taglib>
+	      <taglib-uri>/WEB-INF/tld/fmt.tld</taglib-uri>
+	      <taglib-location>/WEB-INF/tld/fmt.tld</taglib-location>
+	    </taglib>
+	    <taglib>
+	      <taglib-uri>/WEB-INF/tld/fn.tld</taglib-uri>
+	      <taglib-location>/WEB-INF/tld/fn.tld</taglib-location>
+	    </taglib>
+	    <taglib>
+	      <taglib-uri>/WEB-INF/tld/qtt.tld</taglib-uri>
+	      <taglib-location>/WEB-INF/tld/qtt.tld</taglib-location>
+	    </taglib>
+  	</jsp-config>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>login</welcome-file>
+	</welcome-file-list>
+</web-app>
+

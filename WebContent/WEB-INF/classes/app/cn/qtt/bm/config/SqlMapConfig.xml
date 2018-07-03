@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-config-2.dtd" >
+<sqlMapConfig>
+	<settings useStatementNamespaces="true" />
+	<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_log_error_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_log_user_access_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_log_user_login_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_order_info_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_order_info_goods_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_order_info_shop_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_send_email_buffer_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_send_email_history_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_send_mms_buffer_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_send_mms_history_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_send_sms_buffer_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_send_sms_history_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_shop_category_goods_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_shop_category_goods_link_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_shop_daily_info_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_shop_goods_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_shop_goods_deal_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_shop_goods_time_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_shop_info_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_shop_info_deal_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_sys_captcha_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_sys_code_metadata_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_sys_code_tree_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_sys_file_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_sys_link_role_menu_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_sys_link_user_role_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_sys_menu_func_info_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_sys_menu_info_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_sys_parameter_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_sys_role_info_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_sys_user_info_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/shop_order_daily_statistics_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/my_order_SqlMap.xml" />
+<sqlMap resource="app/cn/qtt/bm/dao/sqlmaps/t_sys_user_seq_SqlMap.xml" />
+
+</sqlMapConfig>

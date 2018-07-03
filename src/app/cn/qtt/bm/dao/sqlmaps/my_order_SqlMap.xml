@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="my_order" >
+	<resultMap id="my_order_result_map" class="app.cn.qtt.bm.model.MyOrder" >
+		<result column="order_goods_id" property="orderGoodsId" jdbcType="INTEGER" />
+		<result column="order_id" property="orderId" jdbcType="INTEGER" />
+		<result column="shop_id" property="shopId" jdbcType="INTEGER" />
+		<result column="shop_name" property="shopName" jdbcType="VARCHAR" />
+		<result column="shop_goods_id" property="shopGoodsId" jdbcType="INTEGER" />
+		<result column="shop_goods_name" property="shopGoodsName" jdbcType="VARCHAR"/>
+		<result column="shop_goods_price" property="shopGoodsPrice" jdbcType="INTEGER"/>
+		<result column="shop_goods_count" property="shopGoodsCount" jdbcType="INTEGER"/>
+		<result column="order_shop_qrcode" property="orderShopQrcode" jdbcType="VARCHAR"/>
+		<result column="order_shop_run_status" property="orderShopRunStatus" jdbcType="VARCHAR"/>
+		<result column="captchas" jdbcType="VARCHAR" property="captchas" />
+		<result column="file_access_url" jdbcType="VARCHAR" property="fileAccessUrl" />
+	</resultMap>
+	<select id="selectMyOrderInfo" resultMap="my_order_result_map" parameterClass="app.cn.qtt.bm.model.MyOrder" >
+	    select distinct t1.order_goods_id,t1.order_id,t1.shop_id,t3.shop_name,
+	           t1.shop_goods_id,t.shop_goods_name,t.shop_goods_price,
+	           t1.shop_goods_count, t4.order_shop_qrcode,t4.order_shop_run_status,t4.captchas,t5.file_access_url
+		  from t_shop_goods t,
+		       t_order_info_goods t1,
+		       t_shop_info t3,
+		       t_order_info_shop t4,
+		       t_sys_file t5
+		 where t.shop_goods_id = t1.shop_goods_id 
+		   and t4.order_id = t1.order_id
+		   and t4.shop_id = t1.shop_id
+		   and t1.shop_id = t3.shop_id 
+		   and t5.file_id = t.shop_goods_img_file_id
+		   and t4.order_shop_run_status not in('05','06')
+		   and to_days(t1.create_time)=to_days(curdate())
+		   <isNotNull prepend="and" property="orderId">
+		       t1.order_id=#orderId:INTEGER#
+		   </isNotNull>
+		   <isNotNull prepend="and" property="shopId">
+		   	   t1.shop_id=#shopId:INTEGER#
+		   </isNotNull>
+		   <isNotNull prepend="and" property="userCode">
+		       t4.create_user_code = #userCode:VARCHAR#
+		   </isNotNull>
+		UNION
+		select null as order_goods_id,t2.order_id, t2.shop_id,t4.shop_name,null as shop_goods_id,'总计:' as shop_goods_name,t2.price as shop_goods_price,
+		 (select sum(t3.shop_goods_count) from t_order_info_goods t3 where t3.order_id=t2.order_id and t3.shop_id = t2.shop_id)
+			as shop_goods_count, t2.order_shop_qrcode,t2.order_shop_run_status,t2.captchas,''
+		from t_order_info_shop t2,t_shop_info t4
+		where t2.shop_id = t4.shop_id
+		and t2.order_shop_run_status not in('05','06')
+		and to_days(t2.create_time)=to_days(curdate())
+	    <isNotNull prepend="and" property="orderId">
+	       t2.order_id=#orderId:INTEGER#
+	    </isNotNull>
+	    <isNotNull prepend="and" property="shopId">
+	   	   t2.shop_id=#shopId:INTEGER#
+	    </isNotNull>
+	    <isNotNull prepend="and" property="userCode">
+	       t2.create_user_code = #userCode:VARCHAR#
+	    </isNotNull>
+  </select>
+  
+  <select id="selectMyOrderInfo2" resultMap="my_order_result_map" parameterClass="app.cn.qtt.bm.model.MyOrder" >
+	    select distinct t1.order_goods_id,t1.order_id,t1.shop_id,t3.shop_name,
+	           t1.shop_goods_id,t.shop_goods_name,t.shop_goods_price,
+	           t1.shop_goods_count, t4.order_shop_qrcode,t4.order_shop_run_status,t4.captchas,t5.file_access_url
+		  from t_shop_goods t,
+		       t_order_info_goods t1,
+		       t_shop_info t3,
+		       t_order_info_shop t4,
+		       t_sys_file t5
+		 where t.shop_goods_id = t1.shop_goods_id 
+		   and t4.order_id = t1.order_id
+		   and t4.shop_id = t1.shop_id
+		   and t1.shop_id = t3.shop_id 
+		   and t5.file_id = t.shop_goods_img_file_id
+		   and t4.order_shop_run_status not in('05','06','00')
+		   and to_days(t1.create_time) >=to_days(curdate())
+		   <isNotNull prepend="and" property="orderId">
+		       t1.order_id=#orderId:INTEGER#
+		   </isNotNull>
+		   <isNotNull prepend="and" property="shopId">
+		   	   t1.shop_id=#shopId:INTEGER#
+		   </isNotNull>
+		   <isNotNull prepend="and" property="userCode">
+		       t4.create_user_code = #userCode:VARCHAR#
+		   </isNotNull>
+		UNION
+		select null as order_goods_id,t2.order_id, t2.shop_id,t4.shop_name,null as shop_goods_id,'总计:' as shop_goods_name,t2.price as shop_goods_price,
+		 (select sum(t3.shop_goods_count) from t_order_info_goods t3 where t3.order_id=t2.order_id and t3.shop_id = t2.shop_id)
+			as shop_goods_count, t2.order_shop_qrcode,t2.order_shop_run_status,t2.captchas,''
+		from t_order_info_shop t2,t_shop_info t4
+		where t2.shop_id = t4.shop_id
+		and t2.order_shop_run_status not in('05','06','00')
+	    and to_days(t2.create_time) =to_days(curdate())
+	    <isNotNull prepend="and" property="orderId">
+	       t2.order_id=#orderId:INTEGER#
+	    </isNotNull>
+	    <isNotNull prepend="and" property="shopId">
+	   	   t2.shop_id=#shopId:INTEGER#
+	    </isNotNull>
+	    <isNotNull prepend="and" property="userCode">
+	       t2.create_user_code = #userCode:VARCHAR#
+	    </isNotNull>
+  </select>  
+   <select id="selectMyOrderInfo3" resultMap="my_order_result_map" parameterClass="app.cn.qtt.bm.model.MyOrder" >
+	    select distinct t1.order_goods_id,t1.order_id,t1.shop_id,t3.shop_name,
+	           t1.shop_goods_id,t.shop_goods_name,t.shop_goods_price,
+	           t1.shop_goods_count, t4.order_shop_qrcode,t4.order_shop_run_status,t4.captchas,t5.file_access_url
+		  from t_shop_goods t,
+		       t_order_info_goods t1,
+		       t_shop_info t3,
+		       t_order_info_shop t4,
+		       t_sys_file t5
+		 where t.shop_goods_id = t1.shop_goods_id 
+		   and t4.order_id = t1.order_id
+		   and t4.shop_id = t1.shop_id
+		   and t1.shop_id = t3.shop_id 
+		   and t5.file_id = t.shop_goods_img_file_id
+		   <isNotNull prepend="and" property="orderId">
+		       t1.order_id=#orderId:INTEGER#
+		   </isNotNull>
+		   <isNotNull prepend="and" property="shopId">
+		   	   t1.shop_id=#shopId:INTEGER#
+		   </isNotNull>
+		   <isNotNull prepend="and" property="userCode">
+		       t4.create_user_code = #userCode:VARCHAR#
+		   </isNotNull>
+		UNION
+		select null as order_goods_id,t2.order_id, t2.shop_id,t4.shop_name,null as shop_goods_id,'总计:' as shop_goods_name,t2.price as shop_goods_price,
+		 (select sum(t3.shop_goods_count) from t_order_info_goods t3 where t3.order_id=t2.order_id and t3.shop_id = t2.shop_id)
+			as shop_goods_count, t2.order_shop_qrcode,t2.order_shop_run_status,t2.captchas
+		from t_order_info_shop t2,t_shop_info t4
+		where t2.shop_id = t4.shop_id
+	    <isNotNull prepend="and" property="orderId">
+	       t2.order_id=#orderId:INTEGER#
+	    </isNotNull>
+	    <isNotNull prepend="and" property="shopId">
+	   	   t2.shop_id=#shopId:INTEGER#
+	    </isNotNull>
+	    <isNotNull prepend="and" property="userCode">
+	       t2.create_user_code = #userCode:VARCHAR#
+	    </isNotNull>
+  </select>
+   <select id="selectMyOrderInfoByCodeAndTime" resultMap="my_order_result_map" parameterClass="java.util.Map" >
+	    select distinct t1.order_goods_id,t1.order_id,t1.shop_id,t3.shop_name,
+	           t1.shop_goods_id,t.shop_goods_name,t.shop_goods_price,
+	           t1.shop_goods_count, t4.order_shop_qrcode,t4.order_shop_run_status,t4.captchas,t5.file_access_url
+		  from t_shop_goods t,
+		       t_order_info_goods t1,
+		       t_shop_info t3,
+		       t_order_info_shop t4
+		       t_sys_file t5
+		 where t.shop_goods_id = t1.shop_goods_id 
+		   and t4.order_shop_run_status NOT IN  ('00')
+		   and t4.order_id = t1.order_id
+		   and t1.shop_id = t3.shop_id 
+		   and t4.shop_id = t1.shop_id
+		   and t5.file_id = t.shop_goods_img_file_id
+		   and t4.create_user_code = #myOrder.userCode:VARCHAR#
+		   <isNull prepend="and" property="myOrder.createTime">
+		    to_days(t1.create_time) =to_days(curdate())
+		   </isNull>
+		  <isNotNull prepend="and" property="myOrder.createTime">
+		       t1.create_time <![CDATA[>= ]]> #myOrder.createTime:VARCHAR#
+		   </isNotNull>
+		   <isNotNull prepend="and" property="myOrder.endTime">
+		       t1.create_time  <![CDATA[<= ]]> #myOrder.endTime:VARCHAR#
+		   </isNotNull>
+		UNION
+		select null as order_goods_id,t2.order_id, t2.shop_id,t4.shop_name,null as shop_goods_id,'总计:' as shop_goods_name,t2.price as shop_goods_price,
+		 (select sum(t3.shop_goods_count) from t_order_info_goods t3 where t3.order_id=t2.order_id and t3.shop_id = t2.shop_id)
+			as shop_goods_count, t2.order_shop_qrcode,t2.order_shop_run_status,t2.captchas
+		from t_order_info_shop t2,t_shop_info t4
+		where t2.shop_id = t4.shop_id
+		and t2.order_shop_run_status NOT IN  ('00')
+		and t2.create_user_code = #myOrder.userCode:VARCHAR#
+		 <isNull prepend="and" property="myOrder.createTime">
+		    to_days(t2.create_time) =to_days(curdate())
+		  </isNull>
+	    <isNotNull prepend="and" property="myOrder.createTime">
+			t2.create_time <![CDATA[>= ]]>#myOrder.createTime:VARCHAR#
+		</isNotNull>
+		<isNotNull prepend="and" property="myOrder.endTime">
+			 t2.create_time <![CDATA[<= ]]> #myOrder.endTime:VARCHAR#
+		</isNotNull>
+  </select>
+   
+</sqlMap>

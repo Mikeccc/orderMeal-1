@@ -1,0 +1,15 @@
+﻿/***************************************************
+* CSS:link.css
+* 版本:1.0
+* 作者:liujf
+****************************************************/
+
+/** 基础链接 **/
+a:link,a:visited{
+	color:#333;
+	text-decoration:none;
+}
+a:hover,a:active{
+	color:#333;
+	text-decoration:underline;
+}

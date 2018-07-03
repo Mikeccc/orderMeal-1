@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- 线程池 -->
+	<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="10" />
+		<property name="maxPoolSize" value="20" />
+		<property name="queueCapacity" value="25" />
+	</bean> 
+	
+	<!-- 彩信下发线程池 -->
+	<bean id="mmsTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="120" />
+		<property name="maxPoolSize" value="120" />
+		<property name="queueCapacity" value="100000" />
+		<property name="rejectedExecutionHandler">
+		   <!-- 
+		    AbortPolicy:直接抛出java.util.concurrent.RejectedExecutionException异常
+		    CallerRunsPolicy:若已达到待处理队列长度，将由主线程直接处理请求 
+		    DiscardOldestPolicy:抛弃旧的任务；会导致被丢弃的任务无法再次被执行 
+		    DiscardPolicy:抛弃当前任务；会导致被丢弃的任务无法再次被执行 
+		   -->
+		   <bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
+	  </property>
+	</bean>
+	<!-- 短信下发线程池 -->
+	<bean id="smsTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="120" />
+		<property name="maxPoolSize" value="120" />
+		<property name="queueCapacity" value="100000" />
+		<property name="rejectedExecutionHandler">
+		   <!-- 
+		    AbortPolicy:直接抛出java.util.concurrent.RejectedExecutionException异常
+		    CallerRunsPolicy:若已达到待处理队列长度，将由主线程直接处理请求 
+		    DiscardOldestPolicy:抛弃旧的任务；会导致被丢弃的任务无法再次被执行 
+		    DiscardPolicy:抛弃当前任务；会导致被丢弃的任务无法再次被执行 
+		   -->
+		   <bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
+	  </property>
+	</bean>
+	<!-- 密码重置短信下发线程池 -->
+	<bean id="smsPwdRstTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="120" />
+		<property name="maxPoolSize" value="120" />
+		<property name="queueCapacity" value="100000" />
+		<property name="rejectedExecutionHandler">
+		   <!-- 
+		    AbortPolicy:直接抛出java.util.concurrent.RejectedExecutionException异常
+		    CallerRunsPolicy:若已达到待处理队列长度，将由主线程直接处理请求 
+		    DiscardOldestPolicy:抛弃旧的任务；会导致被丢弃的任务无法再次被执行 
+		    DiscardPolicy:抛弃当前任务；会导致被丢弃的任务无法再次被执行 
+		   -->
+		   <bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
+	  </property>
+	</bean>
+	<!-- 邮件下发线程池 -->
+	<bean id="emailTaskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+		<property name="corePoolSize" value="120" />
+		<property name="maxPoolSize" value="120" />
+		<property name="queueCapacity" value="100000" />
+		<property name="rejectedExecutionHandler">
+		   <!-- 
+		    AbortPolicy:直接抛出java.util.concurrent.RejectedExecutionException异常
+		    CallerRunsPolicy:若已达到待处理队列长度，将由主线程直接处理请求 
+		    DiscardOldestPolicy:抛弃旧的任务；会导致被丢弃的任务无法再次被执行 
+		    DiscardPolicy:抛弃当前任务；会导致被丢弃的任务无法再次被执行 
+		   -->
+		   <bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
+	  </property>
+	</bean>
+	
+	<bean id="mmsSendScheduleServiceImpl" class="app.cn.qtt.bm.scheduler.impl.MmsSendScheduleServiceImpl">
+		<description>彩信下发调度任务服务</description>
+		<property name="sendInterfaceService" ref="sendInterfaceServiceImpl"></property>
+		<property name="mmsTaskExecutor" ref="mmsTaskExecutor"></property>
+		<property name="orderService" ref="orderServiceImpl"></property>
+		<property name="shopService" ref="shopServiceImpl"></property>
+		<property name="goodsService" ref="goodsServiceImpl"></property>
+		<property name="mmsService" ref="mmsServiceImpl"></property>
+		<property name="userService" ref="userServiceImpl"></property>
+		<property name="smsService" ref="smsServiceImpl"></property>
+		<property name="commonService" ref="commonServiceImpl"></property>
+	</bean>
+	
+	<bean id="smsSendScheduleServiceImpl" class="app.cn.qtt.bm.scheduler.impl.SmsSendScheduleServiceImpl">
+		<description>短信下发调度任务服务</description>
+		<property name="sendInterfaceService" ref="sendInterfaceServiceImpl"></property>
+		<property name="smsTaskExecutor" ref="smsTaskExecutor"></property>
+		<property name="orderService" ref="orderServiceImpl"></property>
+		<property name="shopService" ref="shopServiceImpl"></property>
+		<property name="goodsService" ref="goodsServiceImpl"></property>
+		<property name="smsService" ref="smsServiceImpl"></property>
+		<property name="commonService" ref="commonServiceImpl"></property>
+	</bean>
+	
+	<bean id="smsPwdRstSendScheduleServiceImpl" class="app.cn.qtt.bm.scheduler.impl.SmsPwdRstSendScheduleServiceImpl">
+		<description>密码重置短信下发调度任务服务</description>
+		<property name="sendInterfaceService" ref="sendInterfaceServiceImpl"></property>
+		<property name="smsPwdRstTaskExecutor" ref="smsPwdRstTaskExecutor"></property>
+		<property name="smsService" ref="smsServiceImpl"></property>
+	</bean>
+	
+	<bean id="emailSendScheduleServiceImpl" class="app.cn.qtt.bm.scheduler.impl.EmailSendScheduleServiceImpl">
+		<description>邮件发送调度任务服务</description>
+		<property name="sendInterfaceService" ref="sendInterfaceServiceImpl"></property>
+		<property name="emailService" ref="emailServiceImpl"></property>
+		<property name="emailTaskExecutor" ref="emailTaskExecutor"></property>
+		<property name="orderService" ref="orderServiceImpl"></property>
+		<property name="shopService" ref="shopServiceImpl"></property>
+		<property name="goodsService" ref="goodsServiceImpl"></property>
+		<property name="commonService" ref="commonServiceImpl"></property>
+	</bean>
+	
+	<bean id="sendInterfaceServiceImpl" class="app.cn.qtt.bm.scheduler.impl.SendInterfaceServiceImpl">
+		<description>下发接口服务</description>
+		<property name="sendService" ref="sendServiceImpl"></property>
+		<property name="mmsService" ref="mmsServiceImpl"></property>
+		<property name="smsService" ref="smsServiceImpl"></property>
+		<property name="emailService" ref="emailServiceImpl"></property>
+	</bean>
+	
+	<bean id="sendServiceImpl" class="app.cn.qtt.bm.scheduler.impl.SendServiceImpl">
+		<description>发送服务</description>
+		<property name="mmsService" ref="mmsServiceImpl"></property>
+		<property name="smsService" ref="smsServiceImpl"></property>
+		<property name="emailService" ref="emailServiceImpl"></property>
+	</bean>
+	<!-- 过期订单job Begin add by JJF -->
+	<bean id="overTimeOrderQuartzJobBean" class="app.cn.qtt.bm.scheduler.impl.OverTimeOrderQuartzJobBean">
+		<property name="orderService" ref="orderServiceImpl"></property>
+	</bean>
+	<!-- 密码失效job Added by Gabriel 2013-08-26 -->
+	<bean id="passwordOverTimeQuartzJob" class="app.cn.qtt.bm.scheduler.impl.PasswordOverTimeQuartzJobImpl">
+		<property name="userService" ref="userServiceImpl"></property>
+	</bean>	
+	
+</beans>
+

@@ -1,0 +1,54 @@
+﻿.pagebar{ 
+	width:420px;
+	padding:10px 0px;
+	margin:auto;
+	clear:both}
+
+.pagebar a{
+	padding:4px 3px 4px 3px; 
+	background:#cccccc;
+	cursor: default;
+}
+/* enabled状态 */
+.pagebar a.enabled_link {
+	background:#C40401;
+	cursor: pointer;
+}
+
+.pagebar a, .pagebar span{
+	display:block; 
+	float:left; 
+	margin:0px 3px 0px 3px;}
+
+.pagebar span{
+	padding:4px 3px 4px 3px;}
+	
+.pagebar .go_input{
+	padding-top:0;
+}
+.pagebar .go_input input{
+	width:30px;
+}
+
+.pagebar a:link {
+ color: #FFFFFF; 
+ text-decoration:none
+}
+.pagebar a:visited {
+ color: #FFFFFF; 
+  text-decoration:none
+}
+.pagebar a:hover {
+ color: #FFFFFF; 
+  text-decoration:none
+}
+.pagebar a:active { 
+ color: #FFFFFF; 
+  text-decoration:none
+}
+
+.GO_btn{ 
+	background:#C40401;
+	color:#FFFFFF; 
+	cursor:pointer
+}

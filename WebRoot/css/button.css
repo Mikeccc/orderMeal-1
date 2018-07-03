@@ -1,0 +1,127 @@
+﻿/***************************************************
+* CSS:button.css
+* 版本:1.0
+* 作者:liujf
+****************************************************/
+
+/** 二字按钮 **/
+.f2{width:63px;height:22px;border:0;cursor:pointer;}
+	.ss{background:url(../images/button/ss.gif) no-repeat;}
+	.tj{background:url(../images/button/tj.gif) no-repeat;}
+	.cs{background:url(../images/button/cs.gif) no-repeat;}
+	.cx{background:url(../images/button/cx.gif) no-repeat;}
+	.sc{background:url(../images/button/sc.gif) no-repeat;}
+	.qs{background:url(../images/button/qs.gif) no-repeat;}
+		.qs_lock{background:url(../images/button/qs_lock.gif) no-repeat;cursor:default;}
+	.fk{background:url(../images/button/fk.gif) no-repeat;}
+		.fk_lock{background:url(../images/button/fk_lock.gif) no-repeat;cursor:default;}
+	.dy{background:url(../images/button/dy.gif) no-repeat;}
+	.fh{background:url(../images/button/fh.gif) no-repeat;}
+	.xg{background:url(../images/button/xg.gif) no-repeat;}
+	.tj2{background:url(../images/button/tj2.gif) no-repeat;}
+	.sx{background:url(../images/button/sx.gif) no-repeat;}
+	.qd{background:url(../images/button/qd.gif) no-repeat;}
+	.gl{background:url(../images/button/gl.gif) no-repeat;}
+	.cz{background:url(../images/button/cz.gif) no-repeat;}
+	.dr{background:url(../images/button/dr.gif) no-repeat;}
+
+/** 三字按钮 **/
+.f3{width:70px;height:22px;border:0;cursor:pointer;}
+	.xzh{background:url(../images/button/xzh.gif) no-repeat;}
+	.sch{background:url(../images/button/sch.gif) no-repeat;}
+	.xyb{background:url(../images/button/xyb.gif) no-repeat;}
+
+/** 四字按钮 **/
+.f4{width:83px;height:22px;border:0;cursor:pointer;}
+	.xxdd{background:url(../images/button/xxdd.gif) no-repeat;}
+	.bzgj{background:url(../images/button/bzgj.gif) no-repeat;}
+	.sptg{background:url(../images/button/sptg.gif) no-repeat;}
+		.sptg_lock{background:url(../images/button/sptg_lock.gif) no-repeat;cursor:default;}
+	.hcck{background:url(../images/button/hcck.gif) no-repeat;}
+		.hcck_lock{background:url(../images/button/hcck_lock.gif) no-repeat;cursor:default;}
+	.cljy{background:url(../images/button/cljy.gif) no-repeat;}
+	.jcyj{background:url(../images/button/jcyj.gif) no-repeat;}
+	.lscx{background:url(../images/button/lscx.gif) no-repeat;}
+	.xxhc{background:url(../images/button/xxhc.gif) no-repeat;}
+	.dzrw{background:url(../images/button/dzrw.gif) no-repeat;}
+	.gwgj{background:url(../images/button/gwgj.gif) no-repeat;}
+	.lrjl{background:url(../images/button/lrjl.gif) no-repeat;}
+	.lrgj{background:url(../images/button/lrgj.gif) no-repeat;}
+	.gjss{background:url(../images/button/gjss.gif) no-repeat;}
+	.ljqd{background:url(../images/button/ljqd.gif) no-repeat;}
+
+/** 五字按钮 **/
+.f5{width:95px;height:22px;border:0;cursor:pointer;}
+	.spbtg{background:url(../images/button/spbtg.gif) no-repeat;}
+		.spbtg_lock{background:url(../images/button/spbtg_lock.gif) no-repeat;cursor:default;}
+	
+/** 六字按钮 **/
+.f6{width:107px;height:22px;border:0;cursor:pointer;}
+	.xzbdjg{background:url(../images/button/xzbdjg.gif) no-repeat;}
+	.xzbdfa{background:url(../images/button/xzbdfa.gif) no-repeat;}
+	.ckbjqk{background:url(../images/button/ckbjqk.gif) no-repeat;}
+	.kqgjss{background:url(../images/button/kqgjss.gif) no-repeat;}
+	.gbgjss{background:url(../images/button/gbgjss.gif) no-repeat;}
+	.ztryxx{background:url(../images/button/ztryxx.gif) no-repeat;}
+
+/** 七字按钮 **/
+.f7{width:120px;height:22px;border:0;cursor:pointer;}
+	.zcrysxx{background:url(../images/button/zcrysxx.gif) no-repeat;}
+	.dyhcrws{background:url(../images/button/dyhcrws.gif) no-repeat;}
+		.dyhcrws_lock{background:url(../images/button/dyhcrws_lock.gif) no-repeat;}
+	.xzjxbdb{background:url(../images/button/xzjxbdb.gif) no-repeat;}
+
+/** 八字按钮 **/
+.f8{width:133px;height:22px;border:0;cursor:pointer;}
+	.xzbkemry{background:url(../images/button/xzbkemry.gif) no-repeat;}
+	.scbkemry{background:url(../images/button/scbkemry.gif) no-repeat;}
+	.bjbkemry{background:url(../images/button/bjbkemry.gif) no-repeat;}
+	.xzybbdmb{background:url(../images/button/xzybbdmb.gif) no-repeat;}
+	.xzjxbdmb{background:url(../images/button/xzjxbdmb.gif) no-repeat;}
+	.xzxtbdmb{background:url(../images/button/xzxtbdmb.gif) no-repeat;}
+	.xzybbkmb{background:url(../images/button/xzybbkmb.gif) no-repeat;}
+	.xzxtbkmb{background:url(../images/button/xzxtbkmb.gif) no-repeat;}
+	.qgxdryxx{background:url(../images/button/qgxdryxx.gif) no-repeat;}
+
+/** 九字按钮 **/
+.f9{width:144px;height:22px;border:0;cursor:pointer;}
+	.gabztryxx{background:url(../images/button/gabztryxx.gif) no-repeat;}
+	.gabxdryxx{background:url(../images/button/gabxdryxx.gif) no-repeat;}
+
+/** 特殊字符按钮 **/
+.in_zy,.in_yy,.in_qbzy,.in_qbyy{width:46px;height:22px;border:0;cursor:pointer;}
+.in_zy{background:url(../images/button/in_zy.gif) no-repeat;}
+.in_yy{background:url(../images/button/in_yy.gif) no-repeat;}
+.in_qbzy{background:url(../images/button/in_qbzy.gif) no-repeat;}
+.in_qbyy{background:url(../images/button/in_qbyy.gif) no-repeat;}
+
+.gotoLeft,.gotoRight{width:18px;height:18px;border:0;cursor:pointer;}
+.gotoLeft{background:url(../images/button/gotoLeft.gif) no-repeat;}
+.gotoRight{background:url(../images/button/gotoRight.gif) no-repeat;}
+
+.topbarLeft,.topbarRight,.topbarLeft2,.topbarRight2{width:18px;height:37px;border:0;cursor:pointer;}
+.topbarLeft{background:url(../images/button/topbarLeft.gif) no-repeat;}
+.topbarRight{background:url(../images/button/topbarRight.gif) no-repeat;}
+.topbarLeft2{background:url(../images/button/topbarLeft2.gif) no-repeat;}
+.topbarRight2{background:url(../images/button/topbarRight2.gif) no-repeat;}
+
+/** 简要列表工具栏按钮 **/
+.firstPage,.prevPage,.nextPage,.lastPage,.firstPageOff,.prevPageOff,.nextPageOff,.lastPageOff,
+.goto,.sure,.reset{width:63px;height:22px;border:0;cursor:pointer;}
+.firstPage{background:url(../images/list/list1/firstPage.gif) no-repeat;}
+.prevPage{background:url(../images/list/list1/prevPage.gif) no-repeat;}
+.nextPage{background:url(../images/list/list1/nextPage.gif) no-repeat;}
+.lastPage{background:url(../images/list/list1/lastPage.gif) no-repeat;}
+.firstPageOff{background:url(../images/list/list1firstPageOff.gif) no-repeat;}
+.prevPageOff{background:url(../images/list/list1/prevPage.gif) no-repeat;}
+.nextPageOff{background:url(../images/list/list1/nextPageOff.gif) no-repeat;}
+.lastPageOff{background:url(../images/list/list1/lastPageOff.gif) no-repeat;}
+.goto{background:url(../images/list/list1/goto.gif) no-repeat;}
+.sure{background:url(../images/list/list1/sure.gif) no-repeat;}
+.reset{background:url(../images/list/list1/reset.gif) no-repeat;}
+.forward500,.backward500{width:81px;height:22px;border:0;cursor:pointer;}
+.forward500{background:url(../images/list/list1/forward500.gif) no-repeat;}
+.backward500{background:url(../images/list/list1/backward500.gif) no-repeat;}
+.showChoose{width:95px;height:22px;border:0;cursor:pointer;background:url(../images/list/list1/showChoose.gif) no-repeat;}
+
+

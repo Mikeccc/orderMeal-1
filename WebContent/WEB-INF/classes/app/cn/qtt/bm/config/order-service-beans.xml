@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+<!-- 用户管理 -->
+	<bean id="userServiceImpl"
+		class="app.cn.qtt.bm.service.impl.UserServiceImpl">
+		<description></description>
+		<property name="TSysUserInfoDAO"
+			ref="tSysUserInfoDAOImpl">
+		</property>
+		<property name="TSysLinkUserRoleDAO"
+			ref="tSysLinkUserRoleDAOImpl">
+		</property>
+	</bean>
+	
+	<!-- 公共服务类 -->
+	<bean id="commonServiceImpl"
+		class="app.cn.qtt.bm.service.impl.CommonServiceImpl">
+		<description></description>
+		<property name="tSysCodeTreeDao"
+			ref="tSysCodeTreeDAOImpl">
+		</property>
+		<property name="tSysParameterDAO"
+			ref="tSysParameterDAOImpl">
+		</property>
+		<property name="sysFileDAO" ref="tSysFileDAOImpl"></property>
+		<property name="tSysUserSeqDAO" ref="tSysUserSeqDAOImpl"></property>
+	</bean>
+	<!-- 菜单权限管理 -->
+	<bean id="menuServiceImpl"
+		class="app.cn.qtt.bm.service.impl.MenuServiceImpl">
+		<description></description>
+		<property name="TSysMenuInfoDAO"
+			ref="tSysMenuInfoDAOImpl">
+		</property>
+		<property name="TSysMenuFuncInfoDAO"
+			ref="tSysMenuFuncInfoDAOImpl">
+		</property>
+		<property name="TSysUserInfoDAO"
+			ref="tSysUserInfoDAOImpl">
+		</property>
+		<property name="TSysRoleInfoDAO"
+			ref="tSysRoleInfoDAOImpl">
+		</property>
+	</bean>	
+	<!-- 角色管理 -->
+	<bean id="roleServiceImpl"
+		class="app.cn.qtt.bm.service.impl.RoleServiceImpl">
+		<description></description>
+		<property name="TSysRoleInfoDAO"
+			ref="tSysRoleInfoDAOImpl">
+		</property>		
+		<property name="TSysLinkRoleMenuDAO"
+			ref="tSysLinkRoleMenuDAOImpl">
+		</property>
+	</bean>
+	<!-- 商店管理 -->
+	<bean id="shopServiceImpl" class="app.cn.qtt.bm.service.impl.ShopServiceImpl">
+		<property name="shopInfoDAO" ref="tShopInfoDAOImpl"></property>
+		<property name="tOrderInfoShopDAO" ref="tOrderInfoShopDAOImpl"></property>
+	</bean>
+	<!-- 商品管理 -->
+	<bean id="goodsServiceImpl" class="app.cn.qtt.bm.service.impl.GoodsServiceImpl" parent="commonServiceImpl">
+		<property name="shopGoodsDAO" ref="tShopGoodsDAOImpl"></property>
+		<property name="shopCategoryGoodsDAO" ref="tShopCategoryGoodsDAOImpl"></property>
+		<property name="shopCategoryGoodsLinkDAO" ref="tShopCategoryGoodsLinkDAOImpl"></property>
+		<property name="orderInfoGoodsDAO" ref="tOrderInfoGoodsDAOImpl"></property>
+		<property name="shopGoodsTimeDAO" ref="tShopGoodsTimeDAOImpl"></property>
+	</bean>
+	<!-- 订单管理 -->
+	<bean id="orderServiceImpl" class="app.cn.qtt.bm.service.impl.OrderServiceImpl">
+		<property name="orderInfoDAO" ref="tOrderInfoDAOImpl"></property>
+		<property name="orderInfoGoodsDAO" ref="tOrderInfoGoodsDAOImpl"></property>
+		<property name="orderInfoShopDAO" ref="tOrderInfoShopDAOImpl"></property>
+		<property name="shopDailyInfoDAO" ref="tShopDailyInfoDAOImpl"></property>
+	</bean>
+	<!-- 短信发送服务 -->
+	<bean id ="messageService" class="app.cn.qtt.bm.message.service.impl.MessageServiceImpl">
+	</bean>
+	<!-- 短信发送管理 -->
+	<bean id="smsServiceImpl" class="app.cn.qtt.bm.service.impl.SmsServiceImpl">
+		<property name="messageService" ref="messageService"></property>
+		<property name="sendSmsBufferDAO" ref="tSendSmsBufferDAOImpl"></property>
+		<property name="sendSmsHistoryDAO" ref="tSendSmsHistoryDAOImpl"></property>
+	</bean>
+	<!-- 彩信发送管理 -->
+	<bean id="mmsServiceImpl" class="app.cn.qtt.bm.service.impl.MmsServiceImpl">
+		<property name="sendMmsBufferDAO" ref="tSendMmsBufferDAOImpl"></property>
+		<property name="sendMmsHistoryDAO" ref="tSendMmsHistoryDAOImpl"></property>
+	</bean>
+	<!-- 邮件发送管理 -->
+	<bean id="emailServiceImpl" class="app.cn.qtt.bm.service.impl.EmailServiceImpl">
+		<property name="sendEmailBufferDAO" ref="tSendEmailBufferDAOImpl"></property>
+		<property name="sendEmailHistoryDAO" ref="tsendEmailHistoryDAOImpl"></property>
+	</bean>
+	<!-- 日志管理 -->
+	<bean id="logServiceImpl" class="app.cn.qtt.bm.service.impl.LogServiceImpl">
+		<property name="tLogUserLoginDAO" ref="tLogUserLoginDAOImpl"></property>
+		<property name="tLogUserAccessDAO" ref="tLogUserAccessDAOImpl"></property>
+	</bean>
+</beans>

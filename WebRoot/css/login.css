@@ -1,0 +1,73 @@
+﻿/***************************************************
+* CSS:login.css
+* 版本:1.0
+* 作者:liujf
+****************************************************/
+
+.login_800x600{
+	width:788px;
+	height:460px;
+	margin:auto;
+	background:url(../images/login/login_800x600.jpg);
+}
+.login_1024x768{
+	width:1014px;
+	height:628px;
+	margin:auto;
+	background:url(../images/login/login_1024x768.jpg);
+}
+.login_1280x768{
+	width:1268px;
+	height:660px;
+	margin:auto;
+	background:url(../images/login/login_1280x800.jpg);
+}
+.login_1280x1024{
+	width:1268px;
+	height:884px;
+	margin:auto;
+	background:url(../images/login/login_1280x1024.jpg);
+}
+.login_1400x1050{
+	width:1386px;
+	height:910px;
+	margin:auto;
+	background:url(../images/login/login_1400x1050.jpg);
+}
+.login_1600x1050{
+	width:1460px;
+	height:910px;
+	margin:auto;
+	background:url(../images/login/login_1600x1050.jpg);
+}
+.loginText{
+	border:0;
+	height:18px;
+	line-height:18px;
+	color:#333;
+	font-size:12px;
+	width:170px;
+	background:transparent;
+}
+
+/** 登录元素 **/
+#inner{
+	position:absolute;
+}
+	#inner table td{
+		height:37px;
+	}
+.bt1{
+	background:url(../images/login/bt1.gif) no-repeat;
+	border:0;
+	width:92px;
+	height:22px;
+	cursor:pointer;
+}
+.bt2{
+	background:url(../images/login/bt2.gif) no-repeat;
+	border:0;
+	width:92px;
+	height:22px;
+	cursor:pointer;
+}

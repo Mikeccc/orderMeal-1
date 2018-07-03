@@ -1,0 +1,77 @@
+﻿/***************************************************
+* CSS:base.css
+* 版本:1.0
+* 作者:liujf
+****************************************************/
+
+html{
+	scrollbar-face-color:#eef2fa;
+	scrollbar-arrow-color:5a75a5;
+	scrollbar-track-color:#fff;
+	scrollbar-shadow-color:#fff;
+	scrollbar-highlight-color:#fff;
+	scrollbar-3dlight-color:#bac7db;
+	scrollbar-darkshadow-Color:#bac7db;
+	background-color:#fff;
+	font-family:"宋体";
+	font-size:12px;
+}
+body {
+	margin:0;
+	padding:0;
+}
+div,form,img,ul,ol,li,p,dl,dt,dd{
+	margin:0;
+	padding:0;
+	border:0;
+}
+form{
+	display:inline;
+}
+ul{
+	list-style:none;
+}
+h1,h2,h3,h4,h5,h6 {
+	margin:0;
+	padding:0;
+}
+fieldset {
+	border:1px solid #d2d2c2;
+	margin:0;
+	padding:0;
+} 
+	legend {
+		color:#0c62b7;
+		background:#fff;
+	}
+.left{
+	float:left;
+}
+.right{
+	float:right;
+}
+/*for IE*/
+a{blr:expression(this.onFocus=this.blur())}
+/*for 现代浏览器*/
+input,a{outline:none;}
+/** 图片居中 **/
+.loadingP{
+	top:50%
+}
+	.loadingImg{
+		top:-50%;
+		left:-50%;
+	}
+	* html .loadingP{
+		position:absolute;
+	}
+	* html .loadingImg{
+		position:relative;
+	}
+	*+html .loadingP{
+		position:absolute;
+	}
+	*+html .loadingImg{
+		position:relative;
+	}
+

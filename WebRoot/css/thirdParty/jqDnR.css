@@ -1,0 +1,113 @@
+﻿/***************************************************
+* CSS:jqDnR.css
+* 版本:1.0
+* 作者:liujf
+****************************************************/
+
+.jqHandle {}
+.jqDrag {
+  cursor: move;
+}
+.jqResize {
+   width:15px;
+   position: absolute;
+   bottom: 0;
+   right: 0;
+   cursor: se-resize;
+}
+.jqDnR {
+    position:absolute;
+		left:0;
+		top:0;
+		display:none;
+}
+.space{
+	width:5px;
+	height:1px;
+	line-height:1px;
+}
+
+.t{
+	height:27px;
+	background:url(../../images/win/winTop.gif) repeat-x;
+}
+.lt{
+	width:5px;
+	height:27px;
+	background:url(../../images/win/winLeftTop.gif) no-repeat;
+}
+.rt{
+	width:5px;
+	height:27px;
+	background:url(../../images/win/winRightTop.gif) no-repeat;
+}
+
+.m{
+	background-color:#fff;
+}
+.lm{
+	width:5px;
+	background:url(../../images/win/winLeft.gif) repeat-y;
+}
+.rm{
+	width:5px;
+	background:url(../../images/win/winRight.gif) repeat-y;
+}
+
+.b{
+	height:30px;
+	background:url(../../images/win/winBottom.gif) repeat-x;
+	padding-right:5px;
+}
+.lb{
+	width:5px;
+	height:30px;
+	background:url(../../images/win/winLeftBottom.gif) no-repeat;
+}
+.rb{
+	width:5px;
+	height:30px;
+	background:url(../../images/win/winRightBottom.gif) no-repeat;
+}
+
+.ltdiv{
+	float:left;
+	background:url(../../images/win/logo.gif) 3px 7px no-repeat;
+	color:#0b67a9;
+	font-weight:bold;
+	padding-left:23px;
+	padding-top:7px;
+}
+.rtdiv,.rtdivHover,.rtdivDown{
+	float:right;
+	cursor:pointer;
+	width:15px;
+	height:15px;
+	padding-top:11px;
+	padding-right:5px;
+}
+.rtdiv{
+	background:url(../../images/win/close.gif) left center no-repeat;
+}
+.rtdivHover{
+	background:url(../../images/win/closeHover.gif) left center no-repeat;
+}
+.rtdivDown{
+	background:url(../../images/win/closeDown.gif) left center no-repeat;
+}
+.winbt,.winbtHover,.winbtDown{
+	border:1px solid #6181b2;
+	cursor:pointer;
+	height:20px;
+	color:#0b67a9;
+	font-size:12px;
+}
+.winbt{
+	background:url(../../images/win/winbt.gif) repeat-x;
+}
+.winbtHover{
+	background:url(../../images/win/winbtHover.gif) repeat-x;
+}
+.winbtDown{
+	background:url(../../images/win/winbtDown.gif) repeat-x;
+}

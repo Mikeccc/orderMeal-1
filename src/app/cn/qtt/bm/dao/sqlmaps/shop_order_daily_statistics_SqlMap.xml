@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="shop_order_daily_statistics" >
+	<resultMap id="shop_order_daily_statisticsResult" class="app.cn.qtt.bm.model.ShopOrderdailyStatistics" >
+		<result column="shop_goods_name" property="shopGoodsName" jdbcType="VARCHAR"/>
+		<result column="shop_goods_price" property="shopGoodsPrice" jdbcType="INTEGER"/>
+		<result column="shop_goods_count" property="shopGoodsCount" jdbcType="INTEGER"/>
+		<result column="order_run_status_count" property="orderRunStatusCount" jdbcType="INTEGER"/>
+	</resultMap>
+	<select id="selectDailyStatistics" resultMap="shop_order_daily_statisticsResult" parameterClass="app.cn.qtt.bm.model.ShopOrderdailyStatistics" >
+	    SELECT t4.shop_goods_name,
+	       t4.shop_goods_price,
+	       sum(t3.shop_goods_count) shop_goods_count,
+	       sum(
+				CASE t1.order_shop_run_status
+				WHEN '01' THEN 1*t3.shop_goods_count
+				WHEN '02' THEN 1*t3.shop_goods_count
+				WHEN '03' THEN 1*t3.shop_goods_count
+				WHEN '06' THEN 1*t3.shop_goods_count
+				ELSE
+					0
+				END
+			) order_run_status_count
+	     from t_order_info_shop t1,t_shop_category_goods_link t2,t_order_info_goods t3,t_shop_goods t4,t_order_info t5
+	    where t1.order_id = t3.order_id
+          and t5.order_id = t1.order_id
+	      and t3.shop_goods_id=t4.shop_goods_id
+	      and t2.shop_goods_id = t4.shop_goods_id
+          and t5.order_run_status in ('01','02','03','04')
+          and to_days(t5.create_time)=to_days(curdate())
+	      and t2.category_id=#categoryId:INTEGER#
+	      and t1.shop_id = #shopId:INTEGER#
+	 group by t4.shop_goods_id
+  </select>
+</sqlMap>

@@ -1,0 +1,40 @@
+﻿/***************************************************
+* CSS:menu.css
+* 版本:1.0
+* 作者:liujf
+****************************************************/
+
+/** OUTLOOK菜单样式 **/
+#sidebarList{
+	width:212px;
+	width:100%;
+}
+#sidebarList div.sidebarContent {
+	overflow:auto;
+}
+#sidebarList a.sidebarTitle{
+	cursor:pointer;
+	display:block;
+	color:#000;
+	height:29px;
+	line-height:29px;
+	padding-left:5px;
+	border-bottom:1px solid #fff;
+	border-top:1px solid #dce4e9;
+	background:url(../../images/sidebar/menu_off.gif) repeat-x;
+	text-decoration:none;
+}
+#sidebarList a.sidebarTitle:hover {
+	color:#fff;
+	border-top:1px solid #dce4e9;
+	background:url(../../images/sidebar/menu_on.gif) repeat-x;
+}
+#sidebarList a.sidebarTitle.selected{
+	color:#fff;
+	border-top:1px solid #dce4e9;
+	background:url(../../images/sidebar/menu_on.gif) repeat-x;
+}
+#sidebarList a.sidebarTitle .sidebarTitleInner{
+	background:url(../../images/sidebar/sidebar-title.gif) left center no-repeat;
+	padding-left:20px;
+}

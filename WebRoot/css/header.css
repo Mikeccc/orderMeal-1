@@ -1,0 +1,36 @@
+﻿/***************************************************
+* CSS:header.css
+* 版本:1.0
+* 作者:liujf
+****************************************************/
+
+/** 按钮组 **/
+.home,.home_on,.help,.help_on,.exit,.exit_on,.sort,.sort_on{
+	width:57px;
+	height:58px;
+	cursor:pointer;
+}
+.home{
+	background:url(../images/home.gif) no-repeat;
+}
+.home_on{
+	background:url(../images/home_on.gif) no-repeat;
+}
+.help{
+	background:url(../images/help.gif) no-repeat;
+}
+.help_on{
+	background:url(../images/help_on.gif) no-repeat;
+}
+.exit{
+	background:url(../images/exit.gif) no-repeat;
+}
+.exit_on{
+	background:url(../images/exit_on.gif) no-repeat;
+}
+.sort{
+	background:url(../images/sort.gif) no-repeat;
+}
+.sort_on{
+	background:url(../images/sort_on.gif) no-repeat;
+}

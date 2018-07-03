@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="codeCache" class="app.cn.qtt.bm.common.cache.CodeCache">
+		<description>code缓存</description>
+		<property name="commonService" ref="commonServiceImpl"></property>
+	</bean>
+	
+	
+	<bean id="parameterCache" class="app.cn.qtt.bm.common.cache.ParameterCache">
+		<description>parameter缓存</description>
+		<property name="commonService" ref="commonServiceImpl"></property>
+	</bean>
+	
+	<!-- 店铺manager -->
+	<bean id="shopMgr" class="app.cn.qtt.bm.manage.impl.ShopMgr">
+		<property name="shopService" ref="shopServiceImpl"></property>
+		<property name="userService" ref="userServiceImpl"></property>
+		<property name="goodsService" ref="goodsServiceImpl"></property>
+        <property name="systemCommonMgr" ref="systemCommonMgr"></property>
+	</bean>
+	<!-- 商品manager -->
+	<bean id="goodsMgr" class="app.cn.qtt.bm.manage.impl.GoodsMgr">
+		<property name="goodsService" ref="goodsServiceImpl"></property>
+	</bean>
+	<!-- 订单manager -->
+	<bean id="orderMgr" class="app.cn.qtt.bm.manage.impl.OrderMgr">
+		<property name="orderService" ref="orderServiceImpl"></property>
+		<property name="goodService" ref="goodsServiceImpl"></property>
+	</bean>
+	<!-- 系统通用 -->
+	<bean id="systemCommonMgr" class="app.cn.qtt.bm.manage.impl.SystemCommonMgr">
+		<property name="commonService" ref="commonServiceImpl"></property>
+		<property name="roleService" ref="roleServiceImpl"></property>
+		<property name="menuService" ref="menuServiceImpl"></property>
+		<property name="userService" ref="userServiceImpl"></property>
+	</bean>
+	<!-- 日志 -->
+	<bean id="logMgr" class="app.cn.qtt.bm.manage.impl.LogMgr">
+		<property name="logService" ref="logServiceImpl"></property>
+	</bean>
+	<!-- 用户 -->
+	<bean id="userMgr" class="app.cn.qtt.bm.manage.impl.UserMgr">
+		<property name="userService" ref="userServiceImpl"></property>
+		<property name="smsMgr" ref="smsMgr"></property>
+        <property name="systemCommonMgr" ref="systemCommonMgr"></property>
+        <property name="orderService" ref="orderServiceImpl"></property>
+	</bean>
+	
+	<bean id="smsMgr" class="app.cn.qtt.bm.manage.impl.SmsMgr">
+		<property name="smsService" ref="smsServiceImpl"></property>
+	</bean>
+</beans>

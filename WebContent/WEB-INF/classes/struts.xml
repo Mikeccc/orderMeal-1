@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+	<constant name="struts.devMode" value="false"/>
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<constant name="struts.convention.classes.reload" value="true" />
+	<constant name="struts.i18n.reload" value="true" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+<!--  	<constant name="struts.action.extension" value="action,xhtml"></constant> -->
+	
+	<constant name="struts.locale" value="zh_CN" />
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	<constant name="struts.ui.theme" value= "simple" />
+	
+	<constant name="struts.freemarker.templatesCache" value="true" /> 
+	
+	<constant name="struts.multipart.maxSize" value="8097152"></constant>
+	
+	<constant name="struts.convention.package.locators" value="actions" />
+	<!--  <constant name="struts.convention.exclude.packages" value="" /> -->
+	<constant name="struts.convention.relative.result.types"
+		value="freemarker,dispatcher" />
+
+	<constant name="struts.objectFactory" value="spring" />
+	
+	<constant name="struts.convention.default.parent.package" value="convention-default" />
+
+	
+
+	
+	<package name="system-default" extends="convention-default">
+		<interceptors>
+			<interceptor name="chain" class="app.cn.qtt.bm.common.intercepors.ChainingInterceptor"/>
+		<!--  
+			<interceptor name="emptyParams" class="app.cn.qtt.bm.common.intercepors.EmptyParametersInterceptor" />
+			<interceptor name="securityPass" class="app.cn.qtt.bm.common.intercepors.SecurityPassInterceptor" />
+			
+		-->
+			<interceptor name="requestPermission" class="app.cn.qtt.bm.common.intercepors.RequestPermissionInterceptor" />
+			
+			<interceptor-stack name="basicStack">
+			    <interceptor-ref name="exception"/>
+			    
+			    <interceptor-ref name="params">
+			        <param name="excludeParams">dojo\..*,^struts\..*</param>
+			    </interceptor-ref>
+			    
+			    <interceptor-ref name="servletConfig"/>
+			    <interceptor-ref name="prepare"/>
+			    <interceptor-ref name="modelDriven"/>
+			    <interceptor-ref name="checkbox"/>
+			    <interceptor-ref name="actionMappingParams"/>
+			    <interceptor-ref name="params">
+			        <param name="excludeParams">dojo\..*,^struts\..*</param>
+			    </interceptor-ref>
+			    <interceptor-ref name="conversionError"/>
+			</interceptor-stack>
+
+			<interceptor-stack name="fileUploadStack">
+			    <interceptor-ref name="fileUpload"/>
+			    <interceptor-ref name="basicStack"/>
+			</interceptor-stack>
+			
+			<interceptor-stack name="modelDrivenStack">
+			    <interceptor-ref name="modelDriven"/>
+			    <interceptor-ref name="basicStack"/>
+			</interceptor-stack>
+
+			<interceptor-stack name="crudStack">
+				
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="chain"/>
+				
+				<interceptor-ref name="requestPermission" />  
+				
+				<interceptor-ref name="store">
+					<param name="operationMode">AUTOMATIC</param>
+				</interceptor-ref>
+	
+				<interceptor-ref name="basicStack">
+					<param name="prepare.alwaysInvokePrepare">false</param>
+				</interceptor-ref>
+				
+			</interceptor-stack>
+			
+		</interceptors>
+
+		<default-interceptor-ref name="crudStack" />
+        <global-results>
+            <result name="login" type="redirect">login?userPhoneNumber=${userPhoneNumber}&amp;errorMessage=${encodeErrorMessage}&amp;userType=${userType}</result>
+            <result name="competence" type="redirect">/error/competence-error.jsp</result>
+            <result name="Exception" type="redirect">/error/error.jsp</result>
+        </global-results>
+
+        <!-- 开发模式使用系统异常处理 -->
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="Exception"/>
+        </global-exception-mappings>
+        <!-- -->
+        
+	</package>
+	
+	
+	
+	<package name="order-default" extends="convention-default">
+		<interceptors>
+			<interceptor name="chain" class="app.cn.qtt.bm.common.intercepors.ChainingInterceptor"/>
+		<!--  
+			<interceptor name="emptyParams" class="app.cn.qtt.bm.common.intercepors.EmptyParametersInterceptor" />
+			<interceptor name="securityPass" class="app.cn.qtt.bm.common.intercepors.SecurityPassInterceptor" />
+			<interceptor name="requestPermission" class="app.cn.qtt.bm.common.intercepors.RequestPermissionInterceptor" />
+		-->
+			<interceptor-stack name="basicStack">
+			    <interceptor-ref name="exception"/>
+			    
+			    <interceptor-ref name="params">
+			        <param name="excludeParams">dojo\..*,^struts\..*</param>
+			    </interceptor-ref>
+			    
+			    <interceptor-ref name="servletConfig"/>
+			    <interceptor-ref name="prepare"/>
+			    <interceptor-ref name="modelDriven"/>
+			    <interceptor-ref name="checkbox"/>
+			    <interceptor-ref name="actionMappingParams"/>
+			    <interceptor-ref name="params">
+			        <param name="excludeParams">dojo\..*,^struts\..*</param>
+			    </interceptor-ref>
+			    <interceptor-ref name="conversionError"/>
+			</interceptor-stack>
+
+			<interceptor-stack name="fileUploadStack">
+			    <interceptor-ref name="fileUpload"/>
+			    <interceptor-ref name="basicStack"/>
+			</interceptor-stack>
+			
+			<interceptor-stack name="modelDrivenStack">
+			    <interceptor-ref name="modelDriven"/>
+			    <interceptor-ref name="basicStack"/>
+			</interceptor-stack>
+
+			<interceptor-stack name="crudStack">
+				
+				<interceptor-ref name="debugging" />
+				
+				<!--  <interceptor-ref name="requestPermission" />  -->
+				
+				<interceptor-ref name="store">
+					<param name="operationMode">AUTOMATIC</param>
+				</interceptor-ref>
+				
+				<interceptor-ref name="chain"/>
+
+				<interceptor-ref name="basicStack">
+					<param name="prepare.alwaysInvokePrepare">false</param>
+				</interceptor-ref>
+				
+			</interceptor-stack>
+			
+		</interceptors>
+
+		<default-interceptor-ref name="crudStack" />
+        <global-results>
+            <result name="login" type="redirect">login?userPhoneNumber=${userPhoneNumber}&amp;errorMessage=${encodeErrorMessage}</result>
+            <result name="competence" type="redirect">/error/competence-error.jsp</result>
+             <result name="Exception" type="redirect">/error/error.jsp</result>
+        </global-results>
+
+        <!-- 开发模式使用系统异常处理 -->
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="Exception"/>
+        </global-exception-mappings>
+        <!-- -->
+        
+	</package>
+	
+
+	
+
+	<!-- 
+		使用Convention插件,实现约定大于配置的零配置文件风格.
+	           特殊的Result路径在Action类中使用@Result设定. 
+	 -->
+</struts>

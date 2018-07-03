@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="taskMonitor" class="app.cn.qtt.bm.scheduler.TaskMonitor">
+		<property name="checkInterval" value="30" />
+		<property name="maxTaskTime" value="7200" />
+	</bean>
+	<bean id="taskMonitorScheduleJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="taskMonitor" />
+		<property name="targetMethod" value="perform" />
+		<property name="concurrent" value="true" />
+	</bean>
+	<bean id="taskMonitorScheduleTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="taskMonitorScheduleJob" />
+		<property name="cronExpression" value="0,30 * * * * ?" />
+	</bean>
+
+	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="autoStartup" value="true" />
+		<property name="triggers">
+			<list>
+				<ref bean="mmsSendSchedulerTrigger" />  
+				<ref bean="emailSendSchedulerTrigger" />
+				<ref bean="smsSendSchedulerTrigger" />
+				<ref bean="smsPwdRstSendSchedulerTrigger"/>
+				<ref bean="overTimeOrderSchedulerTrigger"/>
+				<ref bean="taskMonitorScheduleTrigger" />
+				<ref bean="passwordOverTimeScheduleTrigger" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="smsSendSchedule" class="app.cn.qtt.bm.scheduler.SmsSendSchedule">
+		<property name="sendScheduleService" ref="smsSendScheduleServiceImpl"></property>
+		<property name="schedulerName" value="短信息下发定时任务调度" />
+	</bean>
+	<bean id="mmsSendSchedule" class="app.cn.qtt.bm.scheduler.MmsSendSchedule">
+		<property name="sendScheduleService" ref="mmsSendScheduleServiceImpl"></property>
+		<property name="schedulerName" value="彩信下发定时任务调度" />
+	</bean>
+	<bean id="emailSendSchedule" class="app.cn.qtt.bm.scheduler.EmailSendSchedule">
+		<property name="sendScheduleService" ref="emailSendScheduleServiceImpl"></property>
+		<property name="schedulerName" value="邮件下发定时任务调度" />
+	</bean>
+	<bean id="smsPwdRstSendSchedule" class="app.cn.qtt.bm.scheduler.SmsPwdRstSendSchedule">
+		<property name="sendScheduleService" ref="smsPwdRstSendScheduleServiceImpl"></property>
+		<property name="schedulerName" value="密码重置短信下发定时任务调度" />
+	</bean>
+	<bean id="overTimeOrderSchedule" class="app.cn.qtt.bm.scheduler.OverTimeOrderSchedule">
+		<property name="overTimeOrderQuartzJob" ref="overTimeOrderQuartzJobBean"></property>
+		<property name="scheduleName" value="订单超时任务调度" />
+	</bean>
+	
+	<bean id="passwordOverTimeSchedule" class="app.cn.qtt.bm.scheduler.PasswordOverTimeSchedule">
+		<property name="passwordOverTimeQuartzJob" ref="passwordOverTimeQuartzJob"></property>
+		<property name="scheduleName" value="密码失效任务调度"></property>
+	</bean>
+	
+	<bean id="smsSendSchedulerJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<description>短信发送JOB</description>
+		<property name="targetObject" ref="smsSendSchedule" />
+		<property name="targetMethod" value="perform" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="mmsSendSchedulerJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<description>彩信发送JOB</description>
+		<property name="targetObject" ref="mmsSendSchedule" />
+		<property name="targetMethod" value="perform" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="emailSendSchedulerJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<description>邮件发送JOB</description>
+		<property name="targetObject" ref="emailSendSchedule" />
+		<property name="targetMethod" value="perform" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="smsPwdRstSendSchedulerJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<description>密码重置短信发送JOB</description>
+		<property name="targetObject" ref="smsPwdRstSendSchedule" />
+		<property name="targetMethod" value="perform" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="overTimeOrderSchedulerJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<description>订单超时JOB</description>
+		<property name="targetObject" ref="overTimeOrderSchedule" />
+		<property name="targetMethod" value="perform" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="passwordOverTimeScheduleJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<description>密码失效</description>
+		<property name="targetObject" ref="passwordOverTimeSchedule" />
+		<property name="targetMethod" value="perform" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="smsSendSchedulerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<description>短信发送调度程序触发器</description>
+		<property name="jobDetail" ref="smsSendSchedulerJob" />
+		<property name="cronExpression" value="0 15 18 * * ?" />
+	</bean>
+	<bean id="mmsSendSchedulerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<description>彩信发送调度程序触发器</description>
+		<property name="jobDetail" ref="mmsSendSchedulerJob" />
+		<property name="cronExpression" value="0 2 10 * * ?" />
+	</bean>
+	<bean id="emailSendSchedulerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<description>邮件发送调度程序触发器</description>
+		<property name="jobDetail" ref="emailSendSchedulerJob" />
+		<property name="cronExpression" value="0 5 10 * * ?" />
+	</bean>
+	<bean id="smsPwdRstSendSchedulerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<description>密码重置短信发送调度程序触发器</description>
+		<property name="jobDetail" ref="smsPwdRstSendSchedulerJob" />
+		<property name="cronExpression" value="0/10 * * * * ?" />
+	</bean>
+	<bean id="overTimeOrderSchedulerTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<description>订单超时调度程序触发器</description>
+		<property name="jobDetail" ref="overTimeOrderSchedulerJob" />
+		<property name="cronExpression" value="0 0 0 * * ?" />
+	</bean>
+	<bean id="passwordOverTimeScheduleTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<description>密码超时调度程序触发器</description>
+		<property name="jobDetail" ref="passwordOverTimeScheduleJob" />
+		<property name="cronExpression" value="0 0 * * * ?" />
+	</bean>	
+	
+</beans>

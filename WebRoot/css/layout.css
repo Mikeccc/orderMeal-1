@@ -1,0 +1,89 @@
+﻿/***************************************************
+* CSS:layout.css
+* 版本:1.0
+* 作者:liujf
+****************************************************/
+
+/** 容器 **/
+#wrap{
+	background-color:#fff;
+	margin:0 auto;
+}
+
+/** 顶部 **/
+#header{
+	height:113px;
+	background:url(../images/header_bg.gif);
+}
+	#headerShadow{
+		height:5px;
+		line-height:5px;
+		background:url(../images/headerShadow.gif) left top repeat-x;
+	}
+	
+/** 中部 **/
+#middle{
+	background-color:#fff;
+}
+	/** 左边栏或右边栏 **/
+	#sidebar{
+		width:212px;
+		border-top:1px solid #d9d9d9;
+		border-bottom:1px solid #d9d9d9;
+	}
+	/** 缩放条 **/
+	#zoombar{
+		width:8px;
+		cursor:pointer;
+		background:url(../images/turnOff.gif) left center no-repeat;
+	}
+	/** 主内容 **/
+	#container{
+		border-top:1px solid #d9d9d9;
+		border-bottom:1px solid #d9d9d9;
+	}
+
+/** 底部 **/
+#footer{
+	clear:both;
+}
+	#footerDiv{
+		background:url(../images/footerBg.gif) repeat-x;
+		text-align:center;
+		color:#fff;
+		width:100%;
+		height:40px;
+		line-height:40px;
+	}
+	#footerShadow{
+		height:6px;
+		line-height:6px;
+		background:url(../images/footerShadow.gif) left top repeat-x;
+	}
+
+/** 顶部工具栏 **/	
+.topbar{
+	background:url(../images/tbTopbar.gif) repeat-x;
+	height:30px;
+	line-height:30px;
+}
+	.topbar #outerTopbarUL li{
+		float:left;
+		display:inline;
+		margin:1px 0px 3px 3px !important;
+		margin:3px 0px 3px 3px;
+	}
+
+/** 欢迎界面 **/
+#welcomeWrap{
+	border-top:1px solid #d9d9d9;
+}
+.borderouter{
+	border:5px solid #eee;
+}
+.borderinner{
+	border:1px solid #ccc;
+}
+.bordershadow{
+	border:1px solid #f0f4f9;
+}
